@@ -1,0 +1,22 @@
+name: Codex port checks
+on:
+  push:
+    branches: [codex-port]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 tools/port_to_codex.py --check
+      - run: python3 tools/validate_codex.py
+      - run: python3 -m unittest discover -s tests/codex_port -v

@@ -1,0 +1,7 @@
+# Native Codex execpolicy prefixes for requests to run outside the sandbox.
+# These are partial guardrails, supplemented by codex_bridge.py and host policy.
+prefix_rule(pattern = ["git", "push", ["--force", "--force-with-lease", "-f"]], decision = "forbidden", justification = "Use a normal push from a reviewed branch.", match = ["git push --force origin main"], not_match = ["git push origin codex-port"])
+prefix_rule(pattern = ["git", "reset", "--hard"], decision = "forbidden", justification = "Preserve unrelated work; use a scoped reversible edit.", match = ["git reset --hard HEAD"])
+prefix_rule(pattern = ["git", "clean", ["-f", "-df", "-xdf", "--force"]], decision = "forbidden", justification = "Inspect and remove only explicitly authorized files.", match = ["git clean -df"])
+prefix_rule(pattern = ["rm", ["-rf", "-fr", "-Rf", "-fR"]], decision = "forbidden", justification = "Use scoped reversible file operations.", match = ["rm -rf build"])
+prefix_rule(pattern = ["sudo"], decision = "forbidden", justification = "Use the configured project tools without privilege escalation.", match = ["sudo bash setup.sh"])

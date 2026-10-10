@@ -1,0 +1,8 @@
+# Trust this project layer in Codex before using project-scoped configuration.
+# No model pin: use the model already selected in your session.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
