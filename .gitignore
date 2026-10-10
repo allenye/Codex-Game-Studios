@@ -171,3 +171,7 @@ $RECYCLE.BIN/
 # the project root. Anchored so a reports/ folder elsewhere stays tracked.
 /reports/
 /test-results/
+
+# Codex task-local artifacts
+.codex/agent-memory/
+.codex/testing/results/

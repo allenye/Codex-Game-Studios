@@ -1,0 +1,125 @@
+{
+  "description": "Codex Game Studios: reviewed native event bridge. Trust through /hooks before relying on it.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" SessionStart",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" PreToolUse",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ],
+        "matcher": "Bash|exec_command|apply_patch|Write|Edit"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" PostToolUse",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ],
+        "matcher": "Bash|exec_command|apply_patch|Write|Edit"
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" PreCompact",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" PostCompact",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" Stop",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" SubagentStart",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" SubagentStop",
+            "timeout": 20,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" SessionEnd",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/codex_bridge.py\" Interrupt",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}
